@@ -20,6 +20,7 @@ const AudioPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const currentSong = {
     title: "Starboy",
@@ -33,72 +34,89 @@ const AudioPlayer = () => {
     return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
   };
 
+  const handleImageClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div className="player-container">
-      {/* Song Info */}
-      <div className="song-info">
-        <img 
-          src={currentSong.coverUrl} 
-          alt="Album Cover" 
-          className="song-cover"
-          onError={(e) => {
-            e.target.src = '/images/default-cover.jpg';
-            e.target.onerror = null;
-          }}
-        />
-        <div className="song-details">
-          <span className="song-title">{currentSong.title}</span>
-          <span className="song-artist">{currentSong.artist}</span>
+    <>
+      {isExpanded && (
+        <div className="overlay" onClick={() => setIsExpanded(false)}>
+          <img 
+            src={currentSong.coverUrl} 
+            alt="Album Cover" 
+            className="expanded-cover"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
-      </div>
-
-      {/* Timeline slider */}
-      <div className="timeline-container">
-        <span className="time-current">{formatTime(currentTime)}</span>
-        <input
-          type="range"
-          className="timeline-slider"
-          value={currentTime}
-          max={duration}
-          onChange={(e) => setCurrentTime(e.target.value)}
-        />
-        <span className="time-total">{formatTime(duration)}</span>
-      </div>
-
-      {/* Main controls */}
-      <div className="controls-container">
-        <div className="left-controls">
-          <RetweetOutlined className="control-icon" />
-        </div>
-
-        <div className="center-controls">
-          <StepBackwardOutlined className="control-icon" />
-          <div className="play-button" onClick={() => setIsPlaying(!isPlaying)}>
-            {isPlaying ? <PauseCircleFilled /> : <PlayCircleFilled />}
+      )}
+      <div className="player-container">
+        {/* Song Info */}
+        <div className="song-info">
+          <img 
+            src={currentSong.coverUrl} 
+            alt="Album Cover" 
+            className="song-cover"
+            onClick={handleImageClick}
+            onError={(e) => {
+              e.target.src = '/images/default-cover.jpg';
+              e.target.onerror = null;
+            }}
+          />
+          <div className="song-details">
+            <span className="song-title">{currentSong.title}</span>
+            <span className="song-artist">{currentSong.artist}</span>
           </div>
-          <StepForwardOutlined className="control-icon" />
         </div>
 
-        <div className="right-controls">
-          <HistoryOutlined className="control-icon" />
+        {/* Timeline slider */}
+        <div className="timeline-container">
+          <span className="time-current">{formatTime(currentTime)}</span>
+          <input
+            type="range"
+            className="timeline-slider"
+            value={currentTime}
+            max={duration}
+            onChange={(e) => setCurrentTime(e.target.value)}
+          />
+          <span className="time-total">{formatTime(duration)}</span>
+        </div>
+
+        {/* Main controls */}
+        <div className="controls-container">
+          <div className="left-controls">
+            <RetweetOutlined className="control-icon" />
+          </div>
+
+          <div className="center-controls">
+            <StepBackwardOutlined className="control-icon" />
+            <div className="play-button" onClick={() => setIsPlaying(!isPlaying)}>
+              {isPlaying ? <PauseCircleFilled /> : <PlayCircleFilled />}
+            </div>
+            <StepForwardOutlined className="control-icon" />
+          </div>
+
+          <div className="right-controls">
+            <HistoryOutlined className="control-icon" />
+          </div>
+        </div>
+
+        {/* Right side controls */}
+        <div className="additional-controls">
+          <SoundOutlined className="control-icon" />
+          <input
+            type="range"
+            className="volume-slider"
+            min="0"
+            max="100"
+            defaultValue="100"
+          />
+          <PictureOutlined className="control-icon" />
+          <ClockCircleOutlined className="control-icon" />
+          <DownloadOutlined className="control-icon" />
         </div>
       </div>
-
-      {/* Right side controls */}
-      <div className="additional-controls">
-        <SoundOutlined className="control-icon" />
-        <input
-          type="range"
-          className="volume-slider"
-          min="0"
-          max="100"
-          defaultValue="100"
-        />
-        <PictureOutlined className="control-icon" />
-        <ClockCircleOutlined className="control-icon" />
-        <DownloadOutlined className="control-icon" />
-      </div>
-    </div>
+    </>
   );
 };
 
