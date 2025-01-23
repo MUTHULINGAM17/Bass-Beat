@@ -1,0 +1,137 @@
+.player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000000;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 12%;
+}
+
+.timeline-container {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.timeline-slider {
+  flex: 1;
+  height: 4px;
+  
+  background: #4f4f4f;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #89CFF0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.time-current, .time-total {
+  color: #ffffff;
+  font-size: 12px;
+  min-width: 45px;
+}
+
+.controls-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.left-controls, .right-controls {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.center-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.control-icon {
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #89CFF0;
+  cursor: pointer;
+}
+
+.additional-controls {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.volume-slider {
+  width: 100px;
+  height: 4px;
+  
+  background: #4f4f4f;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.song-info {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.song-cover {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.song-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.song-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.song-artist {
+  color: #b3b3b3;
+  font-size: 12px;
+}
