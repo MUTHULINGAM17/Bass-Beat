@@ -1,23 +1,78 @@
-.space{
-    
-    font-size: 25px;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10%;
+  background-color: #000;
+  color: #fff;
 }
-.hom{
-    margin-left: 50px;
-}
-.lin{
-    margin-left: 50px;
-}
-.dro{
-    margin-left: 50px;
-}
-.disa{
-    margin-left: 50px;
-}
-.size{
-    width: 10%;
 
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(254, 19, 19);
+  margin-left: -14%;
 }
-.hover{
-    height: 5%;
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  border-radius: 20px;
+  padding: 5px 10px;
+  flex: 1;
+  margin: 0 20px;
+  
+}
+
+.search-icon {
+  color: #fff;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+}
+
+.premium-button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+  
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.user-initial {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.align{
+  width: 40%;
+  margin-right: -16%;
+ 
 }

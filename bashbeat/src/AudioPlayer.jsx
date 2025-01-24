@@ -9,7 +9,11 @@ import {
   HistoryOutlined,
   PictureOutlined,
   ClockCircleOutlined,
-  DownloadOutlined
+  DownloadOutlined,
+  DesktopOutlined,
+  LaptopOutlined,
+  ShrinkOutlined,
+  ExpandAltOutlined
 } from '@ant-design/icons';
 import './AudioPlayer.css';
 import StarboyImg from './assets/Music photos/Starboy.jpg';
@@ -21,6 +25,9 @@ const AudioPlayer = () => {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [deviceOpen, setDeviceOpen] = useState(false);
+  const [isMiniPlayer, setIsMiniPlayer] = useState(false);
 
   const currentSong = {
     title: "Starboy",
@@ -36,6 +43,22 @@ const AudioPlayer = () => {
 
   const handleImageClick = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  const handleProgressChange = (e) => {
+    setCurrentTime(e.target.value);
+  };
+
+  const handleVolumeChange = (e) => {
+    setVolume(e.target.value);
+  };
+
+  const handleTimeUpdate = () => {
+    const currentTime = audioRef.current.currentTime;
+    const duration = audioRef.current.duration;
+    setCurrentTime(currentTime);
+    const progress = (currentTime / duration) * 100;
+    audioRef.current.style.setProperty('--progress', `${progress}%`);
   };
 
   return (
@@ -85,7 +108,8 @@ const AudioPlayer = () => {
             className="timeline-slider"
             value={currentTime}
             max={duration}
-            onChange={(e) => setCurrentTime(e.target.value)}
+            onChange={handleProgressChange}
+            style={{ '--progress': `${(currentTime / duration) * 100}%` }}
           />
           <span className="time-total">{formatTime(duration)}</span>
         </div>
@@ -116,12 +140,41 @@ const AudioPlayer = () => {
             type="range"
             className="volume-slider"
             min="0"
-            max="100"
-            defaultValue="100"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={handleVolumeChange}
+            style={{ '--volume': `${volume * 100}%` }}
           />
           <PictureOutlined className="control-icon" />
           <ClockCircleOutlined className="control-icon" />
           <DownloadOutlined className="control-icon" />
+          <div className="device-control">
+            <DesktopOutlined 
+              className="control-icon"
+              onClick={() => setDeviceOpen(!deviceOpen)}
+            />
+            {deviceOpen && (
+              <div className="device-menu">
+                <div className="device-item">
+                  <LaptopOutlined /> This Device
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="mini-player-control">
+            {isMiniPlayer ? (
+              <ExpandAltOutlined 
+                className="control-icon"
+                onClick={() => setIsMiniPlayer(false)}
+              />
+            ) : (
+              <ShrinkOutlined 
+                className="control-icon"
+                onClick={() => setIsMiniPlayer(true)}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

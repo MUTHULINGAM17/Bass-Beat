@@ -22,8 +22,9 @@
 .timeline-slider {
   flex: 1;
   height: 4px;
-  
-  background: #4f4f4f;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #ff2d2d 0%, #ff2d2d var(--progress), #4f4f4f var(--progress), #4f4f4f 100%);
   border-radius: 2px;
   cursor: pointer;
 }
@@ -32,13 +33,13 @@
   -webkit-appearance: none;
   width: 12px;
   height: 12px;
-  background: #89CFF0;
+  background: #ff2d2d;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .time-current, .time-total {
-  color: #ffffff;
+  color: #ff2d2d;
   font-size: 12px;
   min-width: 45px;
 }
@@ -101,19 +102,24 @@
 .volume-slider {
   width: 100px;
   height: 4px;
-  
-  background: #4f4f4f;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #ff2d2d 0%, #ff2d2d var(--volume), #4f4f4f var(--volume), #4f4f4f 100%);
   border-radius: 2px;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.volume-slider:hover {
-  background: #666666;
 }
 
 .volume-slider:hover::-webkit-slider-thumb {
   transform: scale(1.2);
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #ff2d2d;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .song-info {
@@ -224,10 +230,56 @@
   }
 }
 
-.timeline-slider:hover {
+.timeline-slider {
   background: #666666;
 }
 
 .timeline-slider:hover::-webkit-slider-thumb {
   transform: scale(1.2);
+}
+
+.device-control {
+  position: relative;
+}
+
+.device-menu {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: #282828;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+  min-width: 200px;
+}
+
+.device-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.device-item:hover {
+  background: #333333;
+}
+
+.mini-player-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-player-control .control-icon {
+  color: #b3b3b3;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mini-player-control .control-icon:hover {
+  color: #ffffff;
+  transform: scale(1.1);
 }
