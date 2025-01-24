@@ -42,12 +42,20 @@ const AudioPlayer = () => {
     <>
       {isExpanded && (
         <div className="overlay" onClick={() => setIsExpanded(false)}>
-          <img 
-            src={currentSong.coverUrl} 
-            alt="Album Cover" 
-            className="expanded-cover"
+          <div 
+            className="expanded-cover-container"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <img 
+              src={currentSong.coverUrl} 
+              alt="Album Cover" 
+              className="expanded-cover"
+            />
+            <div className="expanded-song-details">
+              <div className="expanded-title">{currentSong.title}</div>
+              <div className="expanded-artist">{currentSong.artist}</div>
+            </div>
+          </div>
         </div>
       )}
       <div className="player-container">
