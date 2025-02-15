@@ -2,25 +2,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 10%;
+  padding: 15px 1px;
   background-color: #000;
   color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  height: 12%;
+  flex-wrap: wrap; /* Allow items to wrap */
+}
+
+.logo-container {
+  flex: 1; /* Allow the logo container to grow */
 }
 
 .logo {
-  font-size: 30px;
+  font-size: 2rem; /* Base font size */
   font-weight: bold;
   color: rgb(254, 19, 19);
-  margin-left: -14%;
+  margin-left: 5%;
+ position: fixed;
+  
 }
 
 .search-bar {
+  flex: 2; /* Allow the search bar to take more space */
   display: flex;
   align-items: center;
   background-color: #333;
   border-radius: 20px;
   padding: 5px 10px;
-  flex: 1;
   margin: 0 20px;
   
 }
@@ -36,6 +48,7 @@
   outline: none;
   padding: 5px;
   width: 100%;
+  font-size: 1rem; /* Base font size for input */
 }
 
 .premium-button {
@@ -43,15 +56,18 @@
   color: #000;
   border: none;
   border-radius: 20px;
-  padding: 8px 20px;
+  padding: 4px 20px;
   cursor: pointer;
-  
+  position: fixed;
+  margin-left: 71%;
 }
 
 .icon-container {
+  flex: 1; /* Allow the icon container to grow */
   display: flex;
-  align-items: center;
+  justify-content: flex-end; /* Align icons to the right */
   gap: 15px;
+  margin-right: 1%;
 }
 
 .icon {
@@ -73,6 +89,40 @@
 }
 .align{
   width: 40%;
-  margin-right: -16%;
+ margin-left: 31%;
+  position: fixed;
+  
  
 }
+
+.home-button {
+  background-color: #282828; /* Dark background */
+  border: none; /* No border */
+  border-radius: 50%; /* Circular shape */
+  width: 40px; /* Width */
+  height: 40px; /* Height */ /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Transition for hover effect */
+  margin-left: 58%;
+}
+
+.home-button:hover {
+  background-color: #444; /* Lighter background on hover */
+}
+
+.home-button .anticon {
+  color: #ffffff; /* White icon color */
+  font-size: 20px; /* Icon size */
+}
+.logopng{
+  margin-left: 0%;
+  position: fixed;
+  width: 10%; /* Responsive logo size */
+  max-width: 70px; /* Max width for larger screens */
+}
+
+/* Media Queries for Responsiveness */
+
+
+ 

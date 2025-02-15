@@ -8,7 +8,7 @@ import {
   SoundOutlined,
   HistoryOutlined,
   PictureOutlined,
-  ClockCircleOutlined,
+  
   DownloadOutlined,
   DesktopOutlined,
   LaptopOutlined,
@@ -147,7 +147,7 @@ const AudioPlayer = () => {
             style={{ '--volume': `${volume * 100}%` }}
           />
           <PictureOutlined className="control-icon" />
-          <ClockCircleOutlined className="control-icon" />
+          
           <DownloadOutlined className="control-icon" />
           <div className="device-control">
             <DesktopOutlined 

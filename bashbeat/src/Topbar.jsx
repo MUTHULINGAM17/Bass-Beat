@@ -1,12 +1,22 @@
 import React from 'react';
-import { SearchOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
+import { SearchOutlined, BellOutlined, UserOutlined, HomeOutlined } from '@ant-design/icons';
 import './Topbar.css';
 import logoimg from './assets/logo.png'
 
 const Header = () => {
+  const handleHomeClick = () => {
+    // Logic for navigating to the home page
+    console.log("Home button clicked");
+  };
+
   return (
-    
     <div className="header">
+      <div className="logo-container">
+        <button className="home-button" onClick={handleHomeClick}>
+          <HomeOutlined />
+        </button>
+        
+      </div>
       <img src={logoimg} alt="" width="70px" className='logopng' />
       <div className="logo">Bass Beat</div>
       <div className='align'>

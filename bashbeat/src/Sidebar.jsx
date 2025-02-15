@@ -10,7 +10,7 @@ import {
 import { Menu } from 'antd';
 import './Sidebar.css';
 
-const Sidebar = () => {
+const Sidebar = ({ isPlayerVisible }) => {
   const [expanded, setExpanded] = useState(false);
 
   const items = [
@@ -48,7 +48,7 @@ const Sidebar = () => {
 
   return (
     <div 
-      className={`sidebar ${expanded ? 'expanded' : ''}`}
+      className={`sidebar ${expanded ? 'expanded' : isPlayerVisible ? '' : 'extended'}`}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >
